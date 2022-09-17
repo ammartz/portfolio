@@ -4,13 +4,15 @@ module.exports = {
   theme: {
     extend:{
       colors:{
-        primary: '#556665',
-        secondary: '#5a2b31',
+        primary: '#c70039',
+        secondary: '#D87878',
         white: '#fff',
         black: '#000',
         pText: '#f4dcff',
       },
-
+      gridTemplateColumns: {
+        '16': 'repeat(16, minmax(0, 1fr))',
+      }
     }
     
     
