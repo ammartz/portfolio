@@ -1,47 +1,50 @@
-import Header from '../components/header'
-import { db } from '../components/lib/db'
+import Link from 'next/link'
+import NavBar from '../components/nav-bar'
+import Social from '../components/social'
+import { getContentData } from '../lib/content';
 
-export async function getServerSideProps() {
-const facts = await db.select('*').from('facts');
-var data = Object.values(JSON.parse(JSON.stringify(facts)))
+export async function getStaticProps() {
+  const contentData = getContentData();
   return {
-   props:{ data
-     
-    }
-  }
+    props: {
+      contentData,
+    },
+  };
 }
 
 
 
-function Index({data}) {
+function Index({contentData}) {
+  
 
   return (
-  <div className='page'>
-    <div className=''>
-   <Header showBar={true} />
-   </div>
-   <div className='content py-20 bg-primary rounded-b-[10%]'>
-     <div className='flex flex-wrap justify-around gap-8 w-full '>
-       {data.map(entery => {
-       return(
-       <div key={entery.id} className='bg-white flex justify-between items-center rounded-lg w-[400px] h-[80px] px-5'>
-         <div>
-          <h1 className='font-extrabold text-xl'>{entery.fact_title}</h1>
-          <h1 className='ml-5'>{entery.category}</h1>
-          <h1 className='ml-5'>{entery.date}</h1>
-         </div>
-         <div>
-          <h1 className='text-3xl flex justify-center text-white bg-secondary rounded-full w-[40px] h-[40px]'>{entery.id}</h1>
-         </div>
-       </div>)
-     })}
-     </div>
-   </div>
-   <div className='content'>
-     
-   </div>
-  </div>
+  <div>
+    
+    <NavBar />
+    
+    
+    <div className='page bg-[#202020] sm:grid grid-cols-5 h-[100vh]'>
+      <div className='bg-gradient-to-r from-black to-[#202020] flex'>
+      </div>
+      <div className='grid grid-rows-2 h-full col-span-3'>
+        <div className='flex flex-col items-center gap-5 justify-end'>
+          
+          <h1 className='text-primary text-4xl sm:text-5xl'>{contentData[0].name}</h1>
+          
+          <h2 className='text-secondary text-shadow font-thin text-md sm:text-xl '>{contentData[0].description}</h2>
 
+        </div>
+        <div className='flex flex-col items-center gap-12 justify-center'>
+          <Link href='/project'><div className='work-btn'>My Work</div></Link>
+          <Social />
+        </div>
+      </div>
+      <div className='bg-gradient-to-l from-black to-[#202020]'>
+      </div>
+    </div>
+
+  
+  </div>
   )
 }
 

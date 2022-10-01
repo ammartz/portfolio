@@ -1,13 +1,15 @@
 :root {
-  --primary: #556665;
-  --secondary: #5a2b31;
+
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html,
+html{
+scroll-behavior: smooth;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -26,7 +28,25 @@ a {
 
 .page{
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+  scroll-snap-align: center;
+
+}
+
+.text-shadow{
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
+}
+
+.work-btn{
+  @apply border border-primary w-[120px] h-[50px] text-lg flex justify-center items-center text-primary hover:outline outline-1 outline-primary outline-offset-2 hover:text-white hover:bg-primary cursor-pointer duration-200;
+  @apply sm:w-[180px] sm:h-[80px]
+}
+.social-btn{
+  @apply w-[32px] h-[32px] opacity-30 transform hover:scale-110 hover:opacity-100 duration-200 cursor-pointer;
+}
+
+.project-btn{
+  @apply border border-primary w-[180px] h-[50px] text-lg flex justify-center items-center text-primary hover:outline outline-1 outline-primary outline-offset-2 hover:text-white hover:bg-primary cursor-pointer duration-200;
 }
 
 .header{
@@ -66,26 +86,90 @@ a {
   justify-content: center;
 }
 
-label{
-  color: white;
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
 }
 
-input{
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 5px;
-  padding-left: 5px;
+h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
 }
-input:focus{
-  background: rgba(255, 255, 255, 0.8);
-  outline: none;
+
+h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
 }
-input:invalid{
-  background: var(--secondary);
-  color: rgb(50, 0, 0);
+
+h4 {
+  display: block;
+  font-size: 1em;
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
 }
-input:placeholder-shown{
-  background: rgba(255, 255, 255, 0.2);
+
+h5 {
+  display: block;
+  font-size: .83em;
+  margin-top: 1.67em;
+  margin-bottom: 1.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
 }
-input::placeholder{
-  color: rgba(255, 255, 255, 0.2);;
+
+h6 {
+  display: block;
+  font-size: .67em;
+  margin-top: 2.33em;
+  margin-bottom: 2.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
 }
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+blockquote {
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
